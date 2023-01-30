@@ -12,4 +12,8 @@ class Dimensions {
   static const placesListBottomPadding = 8.0;
   static const placesListSidePadding = 16.0;
   static const placesListEmptyFontSize = 20.0;
+
+  //ImageInput
+  static const imageInputBoxWidth = 10.0;
+  static const imageInputContainerBorderWidth = 1.0;
 }

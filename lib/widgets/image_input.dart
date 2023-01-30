@@ -1,11 +1,8 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:great_places/utils/constants.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:great_places/utils/utils.dart';
 
 class ImageInput extends StatefulWidget {
   final Function onSelectImage;
@@ -23,29 +20,14 @@ class _ImageInputState extends State<ImageInput> {
   File? _storedImage;
 
   Future<void> _takePicture(BuildContext context) async {
-    final imagePicker = ImagePicker();
     try {
-      final imageFile = await imagePicker.pickImage(
-        source: ImageSource.camera,
-        maxWidth: 600,
-      );
-      if (imageFile == null) return;
-      setState(() {
-        _storedImage = File(imageFile.path);
+      final savedImage = await Utils.takeAndSavePicture();
+      setState((){
+        _storedImage = savedImage;
       });
-      final appDir = await getApplicationDocumentsDirectory();
-      final filename = basename((_storedImage?.path)!);
-      final savedImage = await _storedImage?.copy('${appDir.path}/$filename');
-      widget.onSelectImage(savedImage);
+      widget.onSelectImage(_storedImage);
     } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            kDebugMode ? error.toString() : Constants.somethingWrong,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      );
+      Utils.showSnackBar(context, error.toString());
     }
   }
 
