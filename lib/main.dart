@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:great_places/providers/great_places.dart';
 import 'package:great_places/screens/places_list_screen.dart';
 import 'package:great_places/utils/constants.dart';
+import 'package:great_places/utils/navigation_helper.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final navigationHelper = NavigationHelper.getInstance();
     return ChangeNotifierProvider.value(
       value: GreatPlaces(),
       child: MaterialApp(
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.amber,
         )),
         home: const PlacesListScreen(),
+        routes: navigationHelper.getRouteTable(),
       ),
     );
   }
