@@ -60,7 +60,7 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    namespace 'com.sample.great_places'
+
 }
 
 flutter {
