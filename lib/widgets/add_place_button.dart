@@ -15,13 +15,14 @@ class AddPlaceButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(Icons.add),
       label: const Text(Constants.addPlace),
-      onPressed: onClick(),
+      onPressed: () => onClick(),
       style: ButtonStyle(
         elevation: const MaterialStatePropertyAll(0),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         backgroundColor: MaterialStatePropertyAll(
           Theme.of(context).colorScheme.secondary,
         ),
+        foregroundColor: const MaterialStatePropertyAll(Colors.black),
         shape: const MaterialStatePropertyAll(
           ContinuousRectangleBorder(),
         ),
