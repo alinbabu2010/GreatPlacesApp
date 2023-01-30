@@ -6,4 +6,5 @@ class Constants {
   static const title = "Title";
   static const noImage = "No image found";
   static const takeImage = "Take Picture";
+  static const gotNoPlaces = "Got no places yet, start adding some!";
 }
