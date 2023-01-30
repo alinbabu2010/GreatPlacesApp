@@ -15,6 +15,9 @@ class PlacesListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(
+        top: Dimensions.placesItemtTopMargin,
+      ),
       padding: const EdgeInsets.all(Dimensions.placeItemPadding),
       decoration: const BoxDecoration(
         color: Colors.amberAccent,

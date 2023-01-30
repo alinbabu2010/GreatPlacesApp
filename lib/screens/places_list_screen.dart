@@ -26,13 +26,11 @@ class PlacesListScreen extends StatelessWidget {
       body: Consumer<GreatPlaces>(
         builder: (context, places, child) => places.items.isEmpty
             ? child!
-            : Container(
-                margin: const EdgeInsets.only(
-                  top: Dimensions.placesListTopMargin,
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: Dimensions.placesListHorizontalPadding,
-                ),
+            : Padding(
+                padding: const EdgeInsets.only(
+                    left: Dimensions.placesListSidePadding,
+                    right: Dimensions.placesListSidePadding,
+                    bottom: Dimensions.placesListBottomPadding),
                 child: ListView.builder(
                   itemBuilder: (context, index) {
                     final place = places.items[index];
