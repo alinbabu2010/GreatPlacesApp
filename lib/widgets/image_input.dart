@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:great_places/utils/constants.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,21 +22,31 @@ class ImageInput extends StatefulWidget {
 class _ImageInputState extends State<ImageInput> {
   File? _storedImage;
 
-  Future<void> _takePicture() async {
+  Future<void> _takePicture(BuildContext context) async {
     final imagePicker = ImagePicker();
-    final imageFile = await imagePicker.pickImage(
-      source: ImageSource.camera,
-      maxWidth: 600,
-    );
-    setState(() {
-      if (imageFile != null) {
+    try {
+      final imageFile = await imagePicker.pickImage(
+        source: ImageSource.camera,
+        maxWidth: 600,
+      );
+      if (imageFile == null) return;
+      setState(() {
         _storedImage = File(imageFile.path);
-      }
-    });
-    final appDir = await getApplicationDocumentsDirectory();
-    final filename = basename(_storedImage?.path ?? "");
-    final savedImage = await _storedImage?.copy('${appDir.path}/$filename');
-    widget.onSelectImage(savedImage);
+      });
+      final appDir = await getApplicationDocumentsDirectory();
+      final filename = basename((_storedImage?.path)!);
+      final savedImage = await _storedImage?.copy('${appDir.path}/$filename');
+      widget.onSelectImage(savedImage);
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            kDebugMode ? error.toString() : Constants.somethingWrong,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -71,7 +82,7 @@ class _ImageInputState extends State<ImageInput> {
                 Theme.of(context).colorScheme.primary,
               ),
             ),
-            onPressed: _takePicture,
+            onPressed: () => _takePicture(context),
           ),
         )
       ],
