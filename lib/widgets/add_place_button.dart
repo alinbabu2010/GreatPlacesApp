@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:great_places/utils/dimensions.dart';
 
 import '../utils/constants.dart';
 
@@ -25,6 +26,9 @@ class AddPlaceButton extends StatelessWidget {
         foregroundColor: const MaterialStatePropertyAll(Colors.black),
         shape: const MaterialStatePropertyAll(
           ContinuousRectangleBorder(),
+        ),
+        padding: const MaterialStatePropertyAll(
+          EdgeInsets.symmetric(vertical: Dimensions.addBtnVerticalPadding),
         ),
       ),
     );
