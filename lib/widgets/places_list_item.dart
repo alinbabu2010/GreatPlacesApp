@@ -16,7 +16,7 @@ class PlacesListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        top: Dimensions.placesItemtTopMargin,
+        top: Dimensions.placesItemTopMargin,
       ),
       padding: const EdgeInsets.all(Dimensions.placeItemPadding),
       decoration: const BoxDecoration(
