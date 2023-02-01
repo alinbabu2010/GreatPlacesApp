@@ -37,8 +37,8 @@ class _ImageInputState extends State<ImageInput> {
     return Row(
       children: [
         Container(
-          height: mediaQuery.size.width * 0.5,
-          width: mediaQuery.size.width * 0.5,
+          height: mediaQuery.size.width * 0.4,
+          width: mediaQuery.size.width * 0.4,
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.grey),
           ),
