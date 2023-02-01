@@ -14,7 +14,7 @@ class GreatPlaces with ChangeNotifier {
 
   final databaseSource = DatabaseSource.getInstance();
 
-  void addPlace(String title, File image) {
+  Future<void> addPlace(String title, File image) {
     final newPlace = Place(
       id: DateTime.now().toString(),
       title: title,
@@ -23,10 +23,10 @@ class GreatPlaces with ChangeNotifier {
     );
     _items.add(newPlace);
     notifyListeners();
-    databaseSource.insert("places", {
-      'id': newPlace.id,
-      "title": newPlace.title,
-      'image': newPlace.image.path,
+    return databaseSource.insert(DbConstants.placesTable, {
+      MapKey.id: newPlace.id,
+      MapKey.title: newPlace.title,
+      MapKey.image: newPlace.image.path,
     });
   }
 
