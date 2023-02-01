@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:great_places/providers/great_places.dart';
 import 'package:great_places/utils/constants.dart';
@@ -30,11 +31,17 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     if (_titleController.text.isEmpty || _pickedImage == null) {
       return;
     }
-    Provider.of<GreatPlaces>(context, listen: false).addPlace(
-      _titleController.text,
-      _pickedImage!,
-    );
-    Navigator.of(context).pop();
+    Provider.of<GreatPlaces>(context, listen: false)
+        .addPlace(_titleController.text, _pickedImage!)
+        .then((_) => Navigator.of(context).pop())
+        .catchError(
+          (error) => ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  kDebugMode ? error.toString() : Constants.somethingWrong),
+            ),
+          ),
+        );
   }
 
   @override
