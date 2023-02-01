@@ -21,4 +21,7 @@ class Dimensions {
   // AddPlaceButton
   static const addBtnVerticalPadding = 16.0;
 
+  // LocationInput
+ static const locInputContainerBorderWidth = 1.0;
+
 }

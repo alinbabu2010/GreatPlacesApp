@@ -8,4 +8,7 @@ class Constants {
   static const takeImage = "Take Picture";
   static const gotNoPlaces = "Got no places yet, start adding some!";
   static const somethingWrong = "Something went wrong..";
+  static const noLocation = "No Location Chosen";
+  static const currentLocation = "Current Location";
+  static const selectOnMap = "Select on map";
 }
