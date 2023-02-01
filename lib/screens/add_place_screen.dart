@@ -6,6 +6,7 @@ import 'package:great_places/providers/great_places.dart';
 import 'package:great_places/utils/constants.dart';
 import 'package:great_places/utils/dimensions.dart';
 import 'package:great_places/widgets/image_input.dart';
+import 'package:great_places/widgets/location_input.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/add_place_button.dart';
@@ -68,6 +69,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     ),
                     const SizedBox(height: Dimensions.addPlaceBoxHeight),
                     ImageInput(_selectImage),
+                    const SizedBox(height: Dimensions.addPlaceBoxHeight),
+                    const LocationInput(),
                   ],
                 ),
               ),
