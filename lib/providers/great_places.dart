@@ -37,7 +37,7 @@ class GreatPlaces with ChangeNotifier {
               id: item[MapKey.id],
               title: item[MapKey.title],
               location: PlaceLocation(latitude: 0.0, longitude: 0.0),
-              image: File(item[MapKey.title]),
+              image: File(item[MapKey.image]),
             ))
         .toList();
     notifyListeners();
