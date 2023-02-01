@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:great_places/managers/location_manager.dart';
 import 'package:great_places/utils/constants.dart';
 
 import '../utils/dimensions.dart';
@@ -12,6 +14,16 @@ class LocationInput extends StatefulWidget {
 
 class _LocationInputState extends State<LocationInput> {
   String? _previewImageUrl;
+
+  Future<void> _getCurrentUserLocation() async {
+    final placeLocation = await LocationManger.getCurrentUserLocation();
+    setState(() {
+      _previewImageUrl = LocationManger.generatedLocationPreviewUrl(
+        placeLocation.latitude,
+        placeLocation.longitude,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +42,15 @@ class _LocationInputState extends State<LocationInput> {
                   Constants.noLocation,
                   textAlign: TextAlign.center,
                 )
-              : Image.network(_previewImageUrl!),
+              : Image.network(
+                  _previewImageUrl!,
+                  errorBuilder: (__, exception, error) {
+                    return Text(
+                      kDebugMode ? exception.toString() : Constants.noLocation,
+                      textAlign: TextAlign.center,
+                    );
+                  },
+                ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,7 +64,9 @@ class _LocationInputState extends State<LocationInput> {
                   Theme.of(context).colorScheme.primary,
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                _getCurrentUserLocation();
+              },
             ),
             TextButton.icon(
               icon: const Icon(Icons.map),
