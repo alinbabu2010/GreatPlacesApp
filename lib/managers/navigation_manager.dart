@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:great_places/screens/add_place_screen.dart';
 
-class NavigationHelper {
-  NavigationHelper? navigationHelper;
+class NavigationManager {
+  NavigationManager? navigationManger;
 
-  NavigationHelper();
+  NavigationManager();
 
-  NavigationHelper.getInstance() {
-    navigationHelper ??= NavigationHelper();
+  NavigationManager.getInstance() {
+    navigationManger ??= NavigationManager();
   }
 
   Map<String, WidgetBuilder> getRouteTable() => {
