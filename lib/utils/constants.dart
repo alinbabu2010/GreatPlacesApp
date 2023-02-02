@@ -11,4 +11,5 @@ class Constants {
   static const noLocation = "No Location Chosen";
   static const currentLocation = "Current Location";
   static const selectOnMap = "Select on map";
+  static const yourMap = "Your Map";
 }
