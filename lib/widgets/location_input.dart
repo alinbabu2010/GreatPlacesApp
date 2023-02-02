@@ -44,6 +44,7 @@ class _LocationInputState extends State<LocationInput> {
                 )
               : Image.network(
                   _previewImageUrl!,
+                  fit: BoxFit.fill,
                   errorBuilder: (__, exception, error) {
                     return Text(
                       kDebugMode ? exception.toString() : Constants.noLocation,
