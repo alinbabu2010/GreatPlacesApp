@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:great_places/managers/navigation_manager.dart';
 import 'package:great_places/providers/great_places.dart';
 import 'package:great_places/screens/places_list_screen.dart';
 import 'package:great_places/utils/constants.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
