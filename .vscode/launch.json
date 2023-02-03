@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "great_places",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                "secrets.json"
+            ]
+        },
+        {
+            "name": "great_places (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                "secrets.json"
+            ]
+        },
+        {
+            "name": "great_places (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define-from-file",
+                "secrets.json"
+            ]
+        }
+    ]
+}
