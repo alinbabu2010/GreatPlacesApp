@@ -4,7 +4,6 @@ import 'package:sqflite/sqflite.dart' as sql;
 import 'package:sqflite/sqlite_api.dart';
 
 class DatabaseSource {
-
   DatabaseSource? databaseSource;
 
   DatabaseSource();
@@ -18,7 +17,7 @@ class DatabaseSource {
     return sql.openDatabase(path.join(dbPath, DbConstants.dbName),
         onCreate: (database, version) {
       return database.execute(
-          'CREATE TABLE user_places(id STRING PRIMARY KEY, title TEXT, image TEXT)');
+          'CREATE TABLE ${DbConstants.placesTable}(${MapKey.id} STRING PRIMARY KEY, ${MapKey.title} TEXT, ${MapKey.image} TEXT, ${MapKey.latitude} REAL,${MapKey.longitude} REAL, ${MapKey.address} TEXT)');
     }, version: 1);
   }
 
@@ -35,5 +34,4 @@ class DatabaseSource {
     final db = await _database();
     return db.query(table);
   }
-
 }

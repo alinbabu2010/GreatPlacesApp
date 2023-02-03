@@ -7,4 +7,7 @@ class MapKey {
   static const id = "id";
   static const title = "title";
   static const image = "image";
+  static const latitude = "latitude";
+  static const longitude = "longitude";
+  static const address = "address";
 }
