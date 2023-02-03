@@ -15,6 +15,8 @@ class GreatPlaces with ChangeNotifier {
 
   final databaseSource = DatabaseSource.getInstance();
 
+  Place findById(String id) => _items.firstWhere((place) => place.id == id);
+
   Future<void> addPlace(
     String title,
     File image,
@@ -61,5 +63,4 @@ class GreatPlaces with ChangeNotifier {
         ),
         image: File(item[MapKey.image]),
       );
-
 }
