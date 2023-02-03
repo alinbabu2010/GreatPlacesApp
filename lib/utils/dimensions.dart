@@ -1,4 +1,5 @@
 class Dimensions {
+
   // AddPlaceScreen
   static const addPlacePadding = 10.0;
   static const addPlaceBoxHeight = 10.0;
@@ -12,6 +13,8 @@ class Dimensions {
   static const placesListBottomPadding = 8.0;
   static const placesListSidePadding = 16.0;
   static const placesListEmptyFontSize = 20.0;
+  static const placeListAvatarRadius = 25.0;
+  static const placeListAddressMaxLines = 1;
 
   // ImageInput
   static const imageInputBoxWidth = 10.0;
@@ -26,4 +29,5 @@ class Dimensions {
   // PlaceDetailScreen
   static const placeDetailBoxHeight = 10.0;
   static const placeDetailAddressFontSize = 18.0;
+
 }

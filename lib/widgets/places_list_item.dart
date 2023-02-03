@@ -28,13 +28,13 @@ class PlacesListItem extends StatelessWidget {
         ),
         minVerticalPadding: Dimensions.placeItemPadding,
         leading: CircleAvatar(
-          radius: 30,
+          radius: Dimensions.placeListAvatarRadius,
           backgroundImage: FileImage(place.image),
         ),
         title: Text(place.title),
         subtitle: Text(
           place.location.address,
-          maxLines: 1,
+          maxLines: Dimensions.placeListAddressMaxLines,
         ),
         onTap: onClick,
       ),
