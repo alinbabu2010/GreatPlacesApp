@@ -14,3 +14,19 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Run app
+
+Add secrets.json file to project root with below content
+
+```
+{  
+  "MAP_API_KEY" : "YOUR_GOOGLE_MAPS_API_KEY"  
+}
+```
+
+Run your project using following command from terminal
+`flutter run --dart-define-from-file=secrets.json`
+
+If you are using **Android Studio** or **VS code** 
+Configuration file is already added in this repository just run the project using IDE run option.
