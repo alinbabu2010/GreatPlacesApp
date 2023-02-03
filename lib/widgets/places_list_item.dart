@@ -18,20 +18,24 @@ class PlacesListItem extends StatelessWidget {
       margin: const EdgeInsets.only(
         top: Dimensions.placesItemTopMargin,
       ),
-      padding: const EdgeInsets.all(Dimensions.placeItemPadding),
-      decoration: const BoxDecoration(
-        color: Colors.amberAccent,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(
-          Radius.circular(Dimensions.placeItemBorderRadius),
-        ),
-      ),
       child: ListTile(
+        visualDensity: VisualDensity.standard,
+        tileColor: Colors.amberAccent,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(Dimensions.placeItemBorderRadius),
+          ),
+        ),
+        minVerticalPadding: Dimensions.placeItemPadding,
         leading: CircleAvatar(
+          radius: 30,
           backgroundImage: FileImage(place.image),
         ),
         title: Text(place.title),
-        subtitle: Text(place.location.address),
+        subtitle: Text(
+          place.location.address,
+          maxLines: 1,
+        ),
         onTap: onClick,
       ),
     );
