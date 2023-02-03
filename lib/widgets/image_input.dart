@@ -22,7 +22,7 @@ class _ImageInputState extends State<ImageInput> {
   Future<void> _takePicture(BuildContext context) async {
     try {
       final savedImage = await Utils.takeAndSavePicture();
-      setState((){
+      setState(() {
         _storedImage = savedImage;
       });
       widget.onSelectImage(_storedImage);

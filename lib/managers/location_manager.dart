@@ -57,10 +57,14 @@ class LocationManger {
 
   static Future<String> getPlaceAddress(
       double latitude, double longitude) async {
-    final uri = Uri.https("maps.googleapis.com", "maps/api/geocode/json", {
-      "latlng": "$latitude,$longitude",
-      "key": apiKey,
-    },);
+    final uri = Uri.https(
+      "maps.googleapis.com",
+      "maps/api/geocode/json",
+      {
+        "latlng": "$latitude,$longitude",
+        "key": apiKey,
+      },
+    );
     final response = await get(uri);
     return jsonDecode(response.body)["results"][0]["formatted_address"];
   }

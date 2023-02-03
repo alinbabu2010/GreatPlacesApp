@@ -1,5 +1,4 @@
 class Dimensions {
-  
   // AddPlaceScreen
   static const addPlacePadding = 10.0;
   static const addPlaceBoxHeight = 10.0;
@@ -22,10 +21,9 @@ class Dimensions {
   static const addBtnVerticalPadding = 16.0;
 
   // LocationInput
- static const locInputContainerBorderWidth = 1.0;
+  static const locInputContainerBorderWidth = 1.0;
 
- // PlaceDetailScreen
- static const placeDetailBoxHeight = 10.0;
- static const placeDetailAddressFontSize = 18.0;
-
+  // PlaceDetailScreen
+  static const placeDetailBoxHeight = 10.0;
+  static const placeDetailAddressFontSize = 18.0;
 }
