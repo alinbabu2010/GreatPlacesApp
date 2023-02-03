@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:great_places/providers/great_places.dart';
 import 'package:great_places/screens/add_place_screen.dart';
+import 'package:great_places/screens/place_detail_screen.dart';
 import 'package:great_places/utils/constants.dart';
 import 'package:great_places/utils/dimensions.dart';
 import 'package:great_places/widgets/places_list_item.dart';
@@ -31,26 +32,32 @@ class PlacesListScreen extends StatelessWidget {
             snapshot.connectionState == ConnectionState.waiting
                 ? const ProgressBar()
                 : Consumer<GreatPlaces>(
-                    builder: (context, places, child) => places.items.isEmpty || snapshot.hasError
-                        ? child!
-                        : Padding(
-                            padding: const EdgeInsets.only(
-                                left: Dimensions.placesListSidePadding,
-                                right: Dimensions.placesListSidePadding,
-                                bottom: Dimensions.placesListBottomPadding),
-                            child: ListView.builder(
-                              itemBuilder: (context, index) {
-                                final place = places.items[index];
-                                return PlacesListItem(place, () {
-                                  // TODO:Go to detail page..
-                                });
-                              },
-                              itemCount: places.items.length,
-                            ),
-                          ),
+                    builder: (context, places, child) =>
+                        places.items.isEmpty || snapshot.hasError
+                            ? child!
+                            : Padding(
+                                padding: const EdgeInsets.only(
+                                    left: Dimensions.placesListSidePadding,
+                                    right: Dimensions.placesListSidePadding,
+                                    bottom: Dimensions.placesListBottomPadding),
+                                child: ListView.builder(
+                                  itemBuilder: (context, index) {
+                                    final place = places.items[index];
+                                    return PlacesListItem(place, () {
+                                      Navigator.of(context).pushNamed(
+                                        PlaceDetailScreen.routeName,
+                                        arguments: place.id,
+                                      );
+                                    });
+                                  },
+                                  itemCount: places.items.length,
+                                ),
+                              ),
                     child: Center(
                       child: Text(
-                        snapshot.hasError ? snapshot.error.toString() : Constants.gotNoPlaces,
+                        snapshot.hasError
+                            ? snapshot.error.toString()
+                            : Constants.gotNoPlaces,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontSize: Dimensions.placesListEmptyFontSize,
