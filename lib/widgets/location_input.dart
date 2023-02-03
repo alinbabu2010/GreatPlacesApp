@@ -9,7 +9,9 @@ import '../data/models/place_location.dart';
 import '../utils/dimensions.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({Key? key}) : super(key: key);
+  final Function onSelectPlace;
+
+  const LocationInput(this.onSelectPlace, {Key? key}) : super(key: key);
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -18,18 +20,26 @@ class LocationInput extends StatefulWidget {
 class _LocationInputState extends State<LocationInput> {
   String? _previewImageUrl;
 
-  Future<void> _getCurrentUserLocation() async {
-    final placeLocation = await LocationManger.getCurrentUserLocation();
+  void _showPreview(double latitude, double longitude) {
     setState(() {
-      _previewImageUrl = LocationManger.generatedLocationPreviewUrl(
-        placeLocation.latitude,
-        placeLocation.longitude,
-      );
+      _previewImageUrl =
+          LocationManger.generatedLocationPreviewUrl(latitude, longitude);
     });
   }
 
+  Future<void> _getCurrentUserLocation() async {
+    try {
+      final placeLocation = await LocationManger.getCurrentUserLocation();
+      _showPreview(placeLocation.latitude, placeLocation.longitude);
+      widget.onSelectPlace(placeLocation.latitude, placeLocation.longitude);
+    } catch (_) {
+      return;
+    }
+  }
+
   Future<void> _selectOnMap() async {
-    final selectedLocation = await Navigator.of(context).push<LatLng>(MaterialPageRoute(
+    final selectedLocation =
+        await Navigator.of(context).push<LatLng>(MaterialPageRoute(
       fullscreenDialog: true,
       builder: (_) => MapsScreen(
         placeLocation: PlaceLocation(
@@ -39,8 +49,9 @@ class _LocationInputState extends State<LocationInput> {
         isSelecting: true,
       ),
     ));
-    if(selectedLocation == null) return;
-    print(selectedLocation.toString());
+    if (selectedLocation == null) return;
+    _showPreview(selectedLocation.latitude, selectedLocation.longitude);
+    widget.onSelectPlace(selectedLocation.latitude, selectedLocation.longitude);
   }
 
   @override
