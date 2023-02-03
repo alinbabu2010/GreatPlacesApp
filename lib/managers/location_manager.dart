@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:great_places/data/models/place_location.dart';
 
@@ -48,7 +47,7 @@ class LocationManger {
   }
 
   static String generatedLocationPreviewUrl(double latitude, double longitude) {
-    final apiKey = dotenv.env['GOOGLE_API_KEY'];
+    const apiKey = String.fromEnvironment('MAP_API_KEY');
     return 'https://maps.googleapis.com/maps/api/staticmap?center=$latitude,$longitude&zoom=16&size=800x400&maptype=roadmap&markers=color:red%7Clabel:A%7C$latitude,$longitude&key=$apiKey';
   }
 

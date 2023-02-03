@@ -21,11 +21,15 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-def envFile = rootProject.file("../.env")
-def envProperties = new Properties()
-envProperties.load(new FileInputStream(envFile))
-
-def mapApiKey = envProperties['GOOGLE_API_KEY']
+def dartEnvironmentVariables = []
+if (project.hasProperty('dart-define')) {
+    dartEnvironmentVariables = project.property('dart-define')
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                [(pair.first()): pair.last()]
+            }
+}
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -57,7 +61,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders.googleMapsApiKey = mapApiKey
+        manifestPlaceholders.googleMapsApiKey = dartEnvironmentVariables.MAP_API_KEY
     }
 
     buildTypes {
