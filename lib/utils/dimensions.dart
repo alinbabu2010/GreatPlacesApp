@@ -24,4 +24,8 @@ class Dimensions {
   // LocationInput
  static const locInputContainerBorderWidth = 1.0;
 
+ // PlaceDetailScreen
+ static const placeDetailBoxHeight = 10.0;
+ static const placeDetailAddressFontSize = 18.0;
+
 }

@@ -12,4 +12,5 @@ class Constants {
   static const currentLocation = "Current Location";
   static const selectOnMap = "Select on map";
   static const yourMap = "Your Map";
+  static const viewOnMap ="View on map";
 }
