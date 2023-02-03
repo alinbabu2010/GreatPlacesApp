@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:great_places/data/models/place_location.dart';
+import 'package:http/http.dart';
 
 class LocationManger {
+
+  static const apiKey = String.fromEnvironment('MAP_API_KEY');
 
   static Future<PlaceLocation> getCurrentUserLocation() async {
     bool serviceEnabled;
@@ -47,8 +52,17 @@ class LocationManger {
   }
 
   static String generatedLocationPreviewUrl(double latitude, double longitude) {
-    const apiKey = String.fromEnvironment('MAP_API_KEY');
     return 'https://maps.googleapis.com/maps/api/staticmap?center=$latitude,$longitude&zoom=16&size=800x400&maptype=roadmap&markers=color:red%7Clabel:A%7C$latitude,$longitude&key=$apiKey';
+  }
+
+  static Future<String> getPlaceAddress(
+      double latitude, double longitude) async {
+    final uri = Uri.https("maps.googleapis.com", "maps/api/geocode/json", {
+      "latlng": "$latitude,$longitude",
+      "key": apiKey,
+    },);
+    final response = await get(uri);
+    return jsonDecode(response.body)["results"][0]["formatted_address"];
   }
 
 }
