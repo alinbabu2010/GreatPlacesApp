@@ -52,9 +52,8 @@ class PlaceDetailScreen extends StatelessWidget {
           const SizedBox(height: Dimensions.placeDetailBoxHeight),
           TextButton(
             onPressed: () => openMapScreen(context, selectedPlace),
-            style: ButtonStyle(
-              foregroundColor: MaterialStatePropertyAll(
-                  Theme.of(context).colorScheme.primary),
+            style: TextButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.primary,
             ),
             child: const Text(Constants.viewOnMap),
           )

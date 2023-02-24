@@ -17,18 +17,14 @@ class AddPlaceButton extends StatelessWidget {
       icon: const Icon(Icons.add),
       label: const Text(Constants.addPlace),
       onPressed: () => onClick(),
-      style: ButtonStyle(
-        elevation: const MaterialStatePropertyAll(0),
+      style: ElevatedButton.styleFrom(
+        elevation: 0,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        backgroundColor: MaterialStatePropertyAll(
-          Theme.of(context).colorScheme.secondary,
-        ),
-        foregroundColor: const MaterialStatePropertyAll(Colors.black),
-        shape: const MaterialStatePropertyAll(
-          ContinuousRectangleBorder(),
-        ),
-        padding: const MaterialStatePropertyAll(
-          EdgeInsets.symmetric(vertical: Dimensions.addBtnVerticalPadding),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        foregroundColor: Colors.black,
+        shape: const ContinuousRectangleBorder(),
+        padding: const EdgeInsets.symmetric(
+          vertical: Dimensions.addBtnVerticalPadding,
         ),
       ),
     );

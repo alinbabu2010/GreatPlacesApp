@@ -59,10 +59,8 @@ class _ImageInputState extends State<ImageInput> {
           child: TextButton.icon(
             icon: const Icon(Icons.camera),
             label: const Text(Constants.takeImage),
-            style: ButtonStyle(
-              foregroundColor: MaterialStatePropertyAll(
-                Theme.of(context).colorScheme.primary,
-              ),
+            style: TextButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.primary,
             ),
             onPressed: () => _takePicture(context),
           ),

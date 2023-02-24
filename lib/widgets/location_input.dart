@@ -88,11 +88,9 @@ class _LocationInputState extends State<LocationInput> {
             TextButton.icon(
               icon: const Icon(Icons.location_on),
               label: const Text(Constants.currentLocation),
-              style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(Colors.black12),
-                foregroundColor: MaterialStatePropertyAll(
-                  Theme.of(context).colorScheme.primary,
-                ),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.black12,
+                foregroundColor: Theme.of(context).colorScheme.primary,
               ),
               onPressed: () {
                 _getCurrentUserLocation();
@@ -101,11 +99,9 @@ class _LocationInputState extends State<LocationInput> {
             TextButton.icon(
               icon: const Icon(Icons.map),
               label: const Text(Constants.selectOnMap),
-              style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(Colors.black12),
-                foregroundColor: MaterialStatePropertyAll(
-                  Theme.of(context).colorScheme.primary,
-                ),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.black12,
+                foregroundColor: Theme.of(context).colorScheme.primary,
               ),
               onPressed: _selectOnMap,
             ),
