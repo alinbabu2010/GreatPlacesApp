@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:great_places/managers/navigation_manager.dart';
 import 'package:great_places/providers/great_places.dart';
 import 'package:great_places/screens/places_list_screen.dart';
@@ -13,6 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
     final navigationHelper = NavigationManager.getInstance();
     return ChangeNotifierProvider.value(
       value: GreatPlaces(),
